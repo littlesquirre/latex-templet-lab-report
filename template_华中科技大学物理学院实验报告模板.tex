@@ -1,0 +1,223 @@
+\documentclass[a4paper,c5size,twoside,UTF8]{ctexart} %ctexart文档类，A4纸，正文5号字
+\RequirePackage{xeCJK}
+\RequirePackage{graphicx}
+\RequirePackage{geometry}%页面设置
+%\RequirePackage{titlesec}%设置标题
+\RequirePackage{fancyhdr}%定制页眉页脚
+\RequirePackage{enumitem}%定制enumerate环境参数
+\usepackage{caption,subcaption}
+\usepackage{multirow}%横跨两行以上排版
+\usepackage{tabularx} 
+\usepackage{amsmath}
+\usepackage{makecell}%单独控制表项单元，例如表内使用\\换行
+%引用超链接包
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage[colorlinks=true,linkcolor=red,anchorcolor=blue,citecolor=green,bookmarksopen=true]{hyperref}
+% =============================================
+% Part 1 编辑页面宏观信息（行距、页眉、页脚等）
+% =============================================
+\linespread{1.5} \selectfont
+\geometry{top=1in,bottom=1in,left=1in,right=1in}  %页面设置
+%\setcounter{secnumdepth}{2}
+
+%页眉页脚设置
+\pagestyle{fancy} %页眉
+\fancyhf{}
+\fancyfoot[RO]{\thepage}   %奇数右页脚
+\fancyfoot[LE]{\thepage}  %偶数左页脚
+\fancyhead[RO]{\slshape \leftmark} %奇数右页眉
+\fancyhead[LE]{\slshape \leftmark}  %偶数左页眉
+
+%设置插入代码的样式
+\lstset{
+	language=Mathematica, % 设置语言
+	basicstyle=\ttfamily, % 设置字体族
+	breaklines=true, % 自动换行
+	keywordstyle=\bfseries\color{NavyBlue}, % 设置关键字为粗体，颜色为 NavyBlue
+	morekeywords={}, % 设置更多的关键字，用逗号分隔
+	emph={}, % 指定强调词，如果有多个，用逗号隔开
+	emphstyle=\bfseries\color{Rhodamine}, % 强调词样式设置
+	commentstyle=\color{blue}, % 设置注释样式，斜体，浅灰色
+	stringstyle=\bfseries\color{gray}, % 设置字符串样式
+	columns=flexible,
+	numbers=left, % 显示行号在左边
+	numbersep=2em, % 设置行号的具体位置
+	numberstyle=\footnotesize, % 缩小行号
+	frame=single, % 边框
+	framesep=1em % 设置代码与边框的距离
+}
+
+\begin{document}
+
+% =============================================
+% Part 2 主文件
+% =============================================
+
+%设置section,subsection，subsubsection格式
+
+%这是一种修改
+%\CTEXsetup[format={\bfseries\zihao{4}}]{section}  % section四号字体
+%\CTEXsetup[number={\chinese{section}}]{section}
+%\CTEXsetup[name={,、} ]{section}
+\CTEXsetup[format={\bfseries\zihao{-4}} ]{subsection}%subsection小四号字体
+%\renewcommand\thesection{\zhnum{section}}  %section中文编号
+\renewcommand\thesubsection{}  %subsection不编号
+
+%这是另一种修改方式，推荐用这种
+\ctexset{
+	% 修改 section。
+	section={   
+		name={,、},
+		number={\chinese{section}},
+		format=\heiti\raggedright\zihao{4}, % 设置 section 标题为黑体、右对齐、4号字
+		aftername=\hspace{0pt}
+	},
+	% 修改 subsubsection。
+	subsubsection={   
+		name={,.},
+		number={\arabic{subsubsection}},
+		format=\indent\heiti\raggedright\zihao{5}, % 设置 subsection 标题为黑体、5号字
+		aftername=\hspace{0pt}
+	}
+}
+
+\title{这是实验标题！！！！\vspace{-2em}}
+\date{}
+\maketitle
+\thispagestyle{empty}
+%\tableofcontents   %目录
+
+\centerline{学生姓名：姓名 \hfill 学号：U202200001 \hfill 班级：班级名称}
+
+\section{引言}
+
+\subsection{【实验背景】}
+这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。这里是实验背景。
+
+\subsection{【实验目的】}
+\begin{enumerate}[itemsep=0pt,parsep=0pt]
+	\item 实验目的1；
+	\item 实验目的2；
+	\item 实验目的3；
+	\item 实验目的4。
+\end{enumerate}
+
+\section{实验内容与数据处理}
+%下面是若干可能用到的代码模板！
+
+%这是展示一张图片的代码格式
+%	\begin{figure}[h]
+	%		\centering
+	%		\includegraphics[width=0.7\linewidth]{../图像/电路原理图}
+	%		\caption{}
+	%		\label{}
+	%	\end{figure}
+
+%这是展示两张不相关图片的代码格式
+%	\begin{figure}[h]
+	%		\begin{minipage}[b]{0.49\textwidth}
+		%			\centering
+		%			\includegraphics[width=0.7\linewidth]{../图像/前端电路示意图}
+		%			\caption{}
+		%			\label{}
+		%		\end{minipage}
+	%		\begin{minipage}[b]{0.49\textwidth}
+		%			\centering
+		%		    \includegraphics[width=0.7\linewidth]{../图像/交流放大}
+		%			\caption{}
+		%			\label{}
+		%		\end{minipage}
+	%	\end{figure}
+
+%这是展示两张相关图片的代码格式
+%	\begin{figure}[h]
+%		\centering
+%		\begin{subfigure}[b]{0.49\textwidth}
+%			\centering
+%			\includegraphics[width=0.7\linewidth]{../图像/failed}
+%			\caption{小标题}
+%			\label{小标签}
+%		\end{subfigure}
+%		\begin{subfigure}[b]{0.49\textwidth}
+%			\centering
+%			\includegraphics[width=0.7\linewidth]{../图像/交放异常（C小）}
+%			\caption{小标题}
+%			\label{小标签}
+%		\end{subfigure}
+%		\caption{大标题}
+%		\label{大标签}
+%	\end{figure}
+
+%这是某一Mathematica代码格式，为了方便，我没有删除里面的内容。
+%	\begin{lstlisting}[mathescape]
+%		(*电容C根据实际有的电容值，取XXpF，R4尽可能小，所以取XX$\color{blue}\Omega$，由此计算R3与R5和品质因数Q*)
+%		R4 =;(*输入所取的R4值*)
+%		c =;(*输入所取的电容C值*)
+%		a = NSolve[$\mathtt{R4=\frac{R3}{2\times3\times \left(50\times 10^3\times 2 \pi \right)^2\times c^2\times R3^2-1}}$, R3];
+%		R3 = R3 /. a[[1]];
+%		R5 = 6*R3;
+%		$\mathtt{Q=\sqrt{\frac{3}{2} \left(\frac{R3}{R4}-1\right)}}$;
+%		Print["R3=", R3, "$\color{gray}\Omega$"]
+%		Print["R5=", R5, "$\color{gray}\Omega$"]
+%		Print["品质因数Q=", Q]
+%		Clear[R4, c, R3, a, R5, Q]
+%	\end{lstlisting}
+
+%这是表格的代码模板。
+%	\begin{table}[h]
+%		\caption{}
+%		\label{}
+%		\begin{tabular}{}
+%		%这里请使用向导生存
+%		\end{tabular}
+%	\end{table}
+
+\subsection{【实验原理】}
+\subsubsection{第一个实验原理}
+这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。这是第一个实验原理。
+
+\subsubsection{第二个实验原理}
+这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。这是第二个实验原理。
+
+\subsection{【实验内容记数据处理和分析】}
+\subsubsection{第一个实验内容和数据处理与分析}
+第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。第一个实验内容和数据处理分析。
+
+\subsubsection{第二个实验内容和数据处理与分析}
+第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。第二个实验内容和数据处理分析。
+
+
+\subsection{【实验方法和技术】}
+这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。这是实验用到的方法和技术。
+
+\subsection{【实验遇到的问题及解决的方法】}
+这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。这是实验遇到的问题及解决的方法。
+
+
+\section{实验小结}
+\subsection{【体会或收获】}
+通过这个实验，我……
+
+\subsection{【实验建议】}
+\begin{enumerate}[itemsep=0pt,parsep=0pt]
+	\item  实验建议1；
+	\item  实验建议2。		
+\end{enumerate}
+
+\begin{thebibliography}{1}
+	%参考文献并没有使用.bib文件
+  \bibitem{liu} 刘海洋， \LaTeX 入门 [M]， 电子工业出版社
+  \bibitem{hu}  胡伟，\LaTeX 2e完全学习手册(第二版)，清华大学出版社
+\end{thebibliography}
+
+		
+\section*{附录A：}
+%重新编号设置
+\setcounter{equation}{0}
+\renewcommand{\theequation}{A.\arabic{equation}}
+这是附录A。公式重新编号，如：
+\begin{equation}
+	1+1=2
+\end{equation}
+\end{document}
